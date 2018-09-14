@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lista</title>
+</head>
+<body>
+	<h1>Funciona</h1>
+	<form action="crear" method="POST">
+		{% csrf_token %}
+		<input type="text" name="texto">
+		<button type="submit">Crear</button>
+	</form>
+	{% for nota in notas %}
+		{% if not nota.archivado %}
+			<h3>
+				{{ nota }}
+				<a href="/archivar/{{ nota.id }}">Archivar</a>
+			</h3>
+		{% endif %}
+	{% endfor %}
+</body>
+</html>
